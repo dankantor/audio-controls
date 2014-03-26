@@ -9,6 +9,7 @@ function AudioControls(opts){
     this.nextEl = null;
     this.pauseClassName = opts.pauseClassName || 'pause';
     this.pointerEvent = opts.pointerEvent || 'click';
+    this.listenForKeyEvents = opts.listenForKeyEvents || false; 
     if(opts.playQueue){
         this.playQueue = opts.playQueue;
         this.audio = this.playQueue.audio;
@@ -77,6 +78,12 @@ AudioControls.prototype.addListeners = function(){
             this.onNextEvent.bind(this)
         );
     }
+    if(this.listenForKeyEvents === true){
+        $(document).on(
+            'keyup',
+            this.onKeyup.bind(this)
+        );
+    }
 }
 
 AudioControls.prototype.onPause = function(e){
@@ -116,6 +123,32 @@ AudioControls.prototype.onPreviousEvent = function(e){
 AudioControls.prototype.onNextEvent = function(e){
     if(this.playQueue){
         this.playQueue.next();
+    }
+}
+
+// keyboard shortcuts
+AudioControls.prototype.onKeyup = function(e){
+    switch(e.keyCode){
+        case 32:
+            this.playQueue.playPause();
+        break;
+        case 37:
+            this.playQueue.previous();
+        break;
+        case 38:
+            this.playQueue.previous();
+        break;
+        case 39:
+            this.playQueue.next();
+        break;
+        case 40:
+            this.playQueue.next();
+        break;
+        case 77:
+            this.toggleMinimize();
+        break;
+        default:
+        break;
     }
 }
 
