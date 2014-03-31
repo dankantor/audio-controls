@@ -144,9 +144,6 @@ AudioControls.prototype.onKeyup = function(e){
         case 40:
             this.playQueue.next();
         break;
-        case 77:
-            this.toggleMinimize();
-        break;
         default:
         break;
     }
