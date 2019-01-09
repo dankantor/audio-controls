@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title>Audio Controls Example</title>
+    <script async src="./app.js" type="module"></script>
+    <style>
+      .controls {
+        display: flex;
+      }
+      .control {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        border: 1px solid black;
+        margin: 10px;
+        text-align: center;
+        cursor: pointer;
+      }
+      #play-pause::after {
+        content: 'Play';
+      }
+      #play-pause.pause::after {
+        content: 'Pause';
+      }
+    </style>
+  </head>
+  <body>
+    <div class="controls">
+      <div class="control" id="previous">Prev</div>
+      <div class="control" id="play-pause"></div>
+      <div class="control" id="next">Next</div>
+    </div>
+    <div>Click the Play button. Hit spacebar too. The Prev/Next are not hooked up.</div>
+  </body>
+</html>

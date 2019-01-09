@@ -1,22 +1,26 @@
 class AudioControls {
   
   constructor(opts) {
-    this.playQueue = null;
-    this.audio = null;
-    this.playPauseEl = null;
-    this.previousEl = null;
-    this.nextEl = null;
-    this.pauseClassName = opts.pauseClassName || 'pause';
-    this.pointerEvent = opts.pointerEvent || 'click';
-    this.listenForKeyEvents = opts.listenForKeyEvents || false; 
-    if (opts.playQueue) {
-      this.playQueue = opts.playQueue;
-      this.audio = this.playQueue.audio;
+    if (opts) {
+      this.playQueue = null;
+      this.audio = null;
+      this.playPauseEl = null;
+      this.previousEl = null;
+      this.nextEl = null;
+      this.pauseClassName = opts.pauseClassName || 'pause';
+      this.pointerEvent = opts.pointerEvent || 'click';
+      this.listenForKeyEvents = opts.listenForKeyEvents || false; 
+      if (opts.playQueue) {
+        this.playQueue = opts.playQueue;
+        this.audio = this.playQueue.audio;
+      } else {
+        this.audio = opts.audio;
+      }
+      this.cacheElements(opts);
+      this.addListeners();
     } else {
-      this.audio = opts.audio;
+      throw TypeError('constructor arguments cannot be null or undefined');
     }
-    this.cacheElements(opts);
-    this.addListeners();
   }
   
   cacheElements(opts) {
