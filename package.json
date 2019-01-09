@@ -2,7 +2,7 @@
   "author": "Dan Kantor <dan@ex.fm>",
   "name": "audio-controls",
   "description": "Connect events (play, pause, previous, next) from playqueue or the Audio element to HTML elements.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/audio-controls.cjs.js",
   "module": "dist/audio-controls.esm.js",
   "browser": "dist/audio-controls.umd.js",

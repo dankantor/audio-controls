@@ -14,8 +14,7 @@ export default [
   		resolve(),
   		commonjs(),
 			babel({
-				exclude: ['node_modules/**'],
-				runtimeHelpers: true
+				exclude: ['node_modules/**']
 			})
 		]
 	},
@@ -35,8 +34,7 @@ export default [
   		resolve(),
   		commonjs(),
   		babel({
-				exclude: ['node_modules/**'],
-				runtimeHelpers: true
+				exclude: ['node_modules/**']
 			})
 		]
 	}
