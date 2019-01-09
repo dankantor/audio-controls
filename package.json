@@ -1,16 +1,32 @@
 {
   "author": "Dan Kantor <dan@ex.fm>",
   "name": "audio-controls",
-  "description": "",
-  "version": "0.0.3",
+  "description": "Connect events (play, pause, previous, next) from playqueue or the Audio element to HTML elements.",
+  "version": "1.0.0",
+  "main": "dist/audio-controls.cjs.js",
+  "module": "dist/audio-controls.esm.js",
+  "browser": "dist/audio-controls.umd.js",
   "homepage": "https://github.com/dankantor/audio-controls",
   "repository": {
     "type": "git",
     "url": "git://github.com/dankantor/audio-controls.git"
   },
-  "dependencies": {},
-  "optionalDependencies": {},
-  "engines": {
-    "node": "*"
-  }
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "8.2.6",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "rollup": "^0.46.0",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
+  },
+  "files": [
+    "dist"
+  ]
 }
