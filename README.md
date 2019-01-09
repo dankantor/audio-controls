@@ -7,11 +7,14 @@ the Audio element to HTML elements.
 
 ## Install
 
-  npm install audio-controls
+```
+npm install audio-controls
+```
 
 
 ## Usage
 
+```js
   import AudioControls from 'audio-controls';
     
   const audioControls = new AudioControls({
@@ -21,11 +24,14 @@ the Audio element to HTML elements.
     'previous': '#control-previous',
     'next': '#control-next'
   });
+```
     
 ## Example HTML
 
+```html
   <div class="controls">
     <div class="control previous" id="control-previous"></div>
     <div class="control play-pause" id="control-play-pause"></div>
     <div class="control next" id="control-next"></div>
   </div>
+```
