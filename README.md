@@ -15,7 +15,7 @@ npm install audio-controls
 ## Usage
 
 ```js
-  import AudioControls from 'audio-controls';
+  import {AudioControls} from 'audio-controls';
     
   const audioControls = new AudioControls({
     'playQueue': playQueue, // optional if audio is provided
