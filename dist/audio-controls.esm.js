@@ -82,7 +82,7 @@ var AudioControls = function () {
     key: 'onPlayPausePointerEvent',
     value: function onPlayPausePointerEvent(e) {
       if (this.playQueue) {
-        this.playQueue.playPause();
+        this.playQueue.togglePlay();
       } else if (this.audio) {
         this.toggleAudio();
       }
