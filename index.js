@@ -55,6 +55,13 @@ class AudioControls {
     if (this.listenForKeyEvents === true) {
       document.addEventListener('keyup', this.onKeyup.bind(this));
     }
+    try {
+      navigator.mediaSession.setActionHandler('play', this.onPlay.bind(this));
+      navigator.mediaSession.setActionHandler('pause', this.onPause.bind(this));
+      navigator.mediaSession.setActionHandler('previoustrack', this.onPreviousEvent.bind(this));
+      navigator.mediaSession.setActionHandler('nexttrack', this.onNextEvent.bind(this));
+    } catch (err) {
+    }
   }
   
   onPause(e){
@@ -70,18 +77,18 @@ class AudioControls {
   }
   
   onPlayPausePointerEvent(e) {
-    if (this.playQueue) {
-      this.playQueue.togglePlay();
-    } else if (this.audio) {
-      this.toggleAudio();
-    }
+    this.toggleAudio();
   }
   
   toggleAudio() {
-    if (this.audio.paused === true) {
-      this.audio.play();
-    } else {
-      this.audio.pause();
+    if (this.playQueue) {
+      this.playQueue.togglePlay();
+    } else if (this.audio) {
+      if (this.audio.paused === true) {
+        this.audio.play();
+      } else {
+        this.audio.pause();
+      }
     }
   }
   
@@ -100,34 +107,30 @@ class AudioControls {
   onKeyup(e) {
     switch(e.keyCode) {
       case 32:
+        this.toggleAudio();
+      break;
+      case 37:
         if (this.playQueue) {
-          this.playQueue.playPause();
-        } else if (this.audio) {
-          this.toggleAudio(); 
+          this.playQueue.previous();
         }
       break;
-        case 37:
-          if (this.playQueue) {
-            this.playQueue.previous();
-          }
-        break;
-        case 38:
-          if (this.playQueue) {
-            this.playQueue.previous();
-          }
-        break;
-        case 39:
-          if (this.playQueue) {
-            this.playQueue.next();
-          }
-        break;
-        case 40:
-          if (this.playQueue) {
-            this.playQueue.next();
-          }
-        break;
-        default:
-        break;
+      case 38:
+        if (this.playQueue) {
+          this.playQueue.previous();
+        }
+      break;
+      case 39:
+        if (this.playQueue) {
+          this.playQueue.next();
+        }
+      break;
+      case 40:
+        if (this.playQueue) {
+          this.playQueue.next();
+        }
+      break;
+      default:
+      break;
     }
   }
   

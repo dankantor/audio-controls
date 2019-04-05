@@ -35,3 +35,19 @@ npm install audio-controls
     <div class="control next" id="control-next"></div>
   </div>
 ```
+
+## Build
+
+Watch JS and LESS files
+```
+npm run dev
+```
+
+Rollup JS and LESS files
+```
+npm run build
+```
+
+Run the example
+To run it, you'll need a webserver. I recommend https://www.npmjs.com/package/http-server. After installing 
+it run `http-server` and open a browser to http://localhost:8080/example/.
