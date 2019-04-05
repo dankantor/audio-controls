@@ -63,6 +63,12 @@ var AudioControls = function () {
       if (this.listenForKeyEvents === true) {
         document.addEventListener('keyup', this.onKeyup.bind(this));
       }
+      try {
+        navigator.mediaSession.setActionHandler('play', this.onPlay.bind(this));
+        navigator.mediaSession.setActionHandler('pause', this.onPause.bind(this));
+        navigator.mediaSession.setActionHandler('previoustrack', this.onPreviousEvent.bind(this));
+        navigator.mediaSession.setActionHandler('nexttrack', this.onNextEvent.bind(this));
+      } catch (err) {}
     }
   }, {
     key: 'onPause',
@@ -81,19 +87,19 @@ var AudioControls = function () {
   }, {
     key: 'onPlayPausePointerEvent',
     value: function onPlayPausePointerEvent(e) {
-      if (this.playQueue) {
-        this.playQueue.togglePlay();
-      } else if (this.audio) {
-        this.toggleAudio();
-      }
+      this.toggleAudio();
     }
   }, {
     key: 'toggleAudio',
     value: function toggleAudio() {
-      if (this.audio.paused === true) {
-        this.audio.play();
-      } else {
-        this.audio.pause();
+      if (this.playQueue) {
+        this.playQueue.togglePlay();
+      } else if (this.audio) {
+        if (this.audio.paused === true) {
+          this.audio.play();
+        } else {
+          this.audio.pause();
+        }
       }
     }
   }, {
@@ -115,11 +121,7 @@ var AudioControls = function () {
     value: function onKeyup(e) {
       switch (e.keyCode) {
         case 32:
-          if (this.playQueue) {
-            this.playQueue.playPause();
-          } else if (this.audio) {
-            this.toggleAudio();
-          }
+          this.toggleAudio();
           break;
         case 37:
           if (this.playQueue) {
