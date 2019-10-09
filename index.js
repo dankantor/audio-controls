@@ -55,13 +55,6 @@ class AudioControls {
     if (this.listenForKeyEvents === true) {
       document.addEventListener('keyup', this.onKeyup.bind(this));
     }
-    try {
-      navigator.mediaSession.setActionHandler('play', this.onPlay.bind(this));
-      navigator.mediaSession.setActionHandler('pause', this.onPause.bind(this));
-      navigator.mediaSession.setActionHandler('previoustrack', this.onPreviousEvent.bind(this));
-      navigator.mediaSession.setActionHandler('nexttrack', this.onNextEvent.bind(this));
-    } catch (err) {
-    }
   }
   
   onPause(e){
